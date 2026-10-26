@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Avalie Aqui</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f3;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px #00000012;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #26764e;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #777;
+            font-size: 15px;
+        }
+
+        .apresentacao {
+            background-color: #f8faf8;
+            border: 1px solid #e1e9e3;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+
+        .apresentacao h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .estrelas {
+            display: flex;
+            gap: 8px;
+        }
+
+        .estrela {
+            border: none;
+            background: none;
+            color: #d5d5d5;
+            font-size: 32px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .estrela:hover {
+            transform: scale(1.15);
+        }
+
+        .estrela.ativa {
+            color: #ffc107;
+        }
+
+        .nota {
+            color: #777;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .botao {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background-color: #26764e;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .botao:hover {
+            background-color: #1c5b3b;
+        }
+
+        #mensagem {
+            text-align: center;
+            color: #26764e;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .campo {
+            margin-bottom: 18px;
+
+        }
+
+        .campo label, .pergunta {
+            display: block;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .campo input {
+            width: 100%;
+            padding: 0;
+            border: 1px solid #d5ddd7;
+            border-radius: 12px;
+            font-size: 15px;
+        }
+
+        .consentimento {
+            background: #f8faf8;
+            border: 1px solid #e1e9e3;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+             }
+
+            .concetimento p {
+                font-size: 14px;
+                color: #333;
+                line-height: 1.5;
+                margin-bottom: 12px;
+            }
+            .opcao {
+                display: flex;
+                align-items: center;
+                gap:8px;
+                
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>⭐ Avalie Aqui</h1>
+            <p>Avalie as apresentações do 2º DS</p>
+        </header>
+
+        <div class="apresentacao">
+            <h2>Simulação do DED</h2>
+
+            <div class="estrelas" data-nome="Simulação do DED"></div>
+
+            <p class="nota">Selecione de 1 a 5 estrelas</p>
+        </div>
+
+        <div class="apresentacao">
+            <h2>Urna</h2>
+
+            <div class="estrelas" data-nome="Urna"></div>
+
+            <p class="nota">Selecione de 1 a 5 estrelas</p>
+        </div>
+
+        <div class="apresentacao">
+            <h2>Quiz</h2>
+
+            <div class="estrelas" data-nome="Quiz"></div>
+
+            <p class="nota">Selecione de 1 a 5 estrelas</p>
+        </div>
+
+        <div class="apresentacao">
+            <h2>Avalia Aqui</h2>
+
+            <div class="estrelas" data-nome="Avalia Aqui"></div>
+
+            <p class="nota">Selecione de 1 a 5 estrelas</p>
+        </div>
+
+        <button class="botao" onclick="enviar()">
+            Enviar avaliação
+        </button>
+
+        <p id="mensagem"></p>
+
+        <footer>
+            Projeto desenvolvido pelo 2º DS
+        </footer>
+
+    </div>
+
+    <script>
+        const grupos = document.querySelectorAll(".estrelas");
+
+        grupos.forEach(function (grupo) {
+
+            for (let i = 1; i <= 5; i++) {
+
+                const estrela = document.createElement("button");
+
+                estrela.innerHTML = "★";
+                estrela.classList.add("estrela");
+                estrela.type = "button";
+                estrela.setAttribute("aria-label", i + " estrelas");
+
+                estrela.onclick = function () {
+
+                    const estrelas = grupo.querySelectorAll(".estrela");
+
+                    estrelas.forEach(function (item, indice) {
+
+                        if (indice < i) {
+                            item.classList.add("ativa");
+                        } else {
+                            item.classList.remove("ativa");
+                        }
+
+                    });
+
+                    grupo.dataset.nota = i;
+                };
+
+                grupo.appendChild(estrela);
+            }
+
+        });
+
+        function enviar() {
+
+            let completo = true;
+
+            grupos.forEach(function (grupo) {
+
+                if (!grupo.dataset.nota) {
+                    completo = false;
+                }
+
+            });
+
+            const mensagem = document.getElementById("mensagem");
+
+            if (!completo) {
+                mensagem.style.color = "red";
+                mensagem.innerHTML =
+                    "Avalie todas as apresentações antes de enviar!";
+                return;
+            }
+
+            mensagem.style.color = "#26764e";
+            mensagem.innerHTML =
+                "Avaliação enviada com sucesso! Obrigado! 💚";
+
+            // Limpa as estrelas para a próxima pessoa.
+            grupos.forEach(function (grupo) {
+
+                delete grupo.dataset.nota;
+
+                grupo.querySelectorAll(".estrela").forEach(
+                    function (estrela) {
+                        estrela.classList.remove("ativa");
+                    }
+                );
+
+            });
+
+        }
+    </script>
+
+</body>
+
+</html>
