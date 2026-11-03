@@ -2,299 +2,766 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Avalie Aqui</title>
+  <title>Avalie Aqui</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f5f3;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f5f3;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
 
-        .container {
-            background-color: white;
-            width: 100%;
-            max-width: 450px;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 5px 20px #00000012;
-        }
+    .container {
+      background-color: white;
+      width: 100%;
+      max-width: 450px;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px #00000012;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-        header h1 {
-            color: #26764e;
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
+    header h1 {
+      color: #26764e;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
 
-        header p {
-            color: #777;
-            font-size: 15px;
-        }
+    header p {
+      color: #777;
+      font-size: 15px;
+    }
 
-        .apresentacao {
-            background-color: #f8faf8;
-            border: 1px solid #e1e9e3;
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 15px;
-        }
+    .apresentacao {
+      background-color: #f8faf8;
+      border: 1px solid #e1e9e3;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 15px;
+    }
 
-        .apresentacao h2 {
-            font-size: 18px;
-            color: #333;
-            margin-bottom: 12px;
-        }
+    .apresentacao h2 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 12px;
+    }
 
-        .estrelas {
-            display: flex;
-            gap: 8px;
-        }
+    .estrelas {
+      display: flex;
+      gap: 8px;
+    }
 
-        .estrela {
-            border: none;
-            background: none;
-            color: #d5d5d5;
-            font-size: 32px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+    .estrela {
+      border: none;
+      background: none;
+      color: #d5d5d5;
+      font-size: 32px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
 
-        .estrela:hover {
-            transform: scale(1.15);
-        }
+    .estrela:hover {
+      transform: scale(1.15);
+    }
 
-        .estrela.ativa {
-            color: #ffc107;
-        }
+    .estrela.ativa {
+      color: #ffc107;
+    }
 
-        .nota {
-            color: #777;
-            font-size: 13px;
-            margin-top: 8px;
-        }
+    .nota {
+      color: #777;
+      font-size: 13px;
+      margin-top: 8px;
+    }
 
-        .botao {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            background-color: #26764e;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+    .botao {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background-color: #26764e;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
 
-        .botao:hover {
-            background-color: #1c5b3b;
-        }
+    .botao:hover {
+      background-color: #1c5b3b;
+    }
 
-        #mensagem {
-            text-align: center;
-            color: #26764e;
-            margin-top: 15px;
-            font-size: 14px;
-        }
+    #mensagem {
+      text-align: center;
+      color: #26764e;
+      margin-top: 15px;
+      font-size: 14px;
+    }
 
-        footer {
-            text-align: center;
-            margin-top: 25px;
-            color: #999;
-            font-size: 12px;
-        }
+    footer {
+      text-align: center;
+      margin-top: 25px;
+      color: #999;
+      font-size: 12px;
+    }
 
-        .campo {
-            margin-bottom: 18px;
+    .campo {
+      margin-bottom: 18px;
 
-        }
+    }
 
-        .campo label, .pergunta {
-            display: block;
-            color: #333;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
+    .campo label,
+    .pergunta {
+      display: block;
+      color: #333;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
 
-        .campo input {
-            width: 100%;
-            padding: 0;
-            border: 1px solid #d5ddd7;
-            border-radius: 12px;
-            font-size: 15px;
-        }
+    .campo input {
+      width: 100%;
+      padding: 0;
+      border: 1px solid #d5ddd7;
+      border-radius: 12px;
+      font-size: 15px;
+    }
 
-        .consentimento {
-            background: #f8faf8;
-            border: 1px solid #e1e9e3;
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 20px;
-             }
+    .consentimento {
+      background: #f8faf8;
+      border: 1px solid #e1e9e3;
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 20px;
+    }
 
-            .concetimento p {
-                font-size: 14px;
-                color: #333;
-                line-height: 1.5;
-                margin-bottom: 12px;
-            }
-            .opcao {
-                display: flex;
-                align-items: center;
-                gap:8px;
-                
-            }
-    </style>
+    .concetimento p {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .opcao {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+    }
+
+    /* ===== Resultados ===== */
+    .botao-secundario {
+      background-color: white;
+      color: #26764e;
+      border: 1px solid #26764e;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .botao-secundario:hover {
+      background-color: #f8faf8;
+    }
+
+    .resultado-topo {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .resultado-media {
+      color: #26764e;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .barra {
+      background-color: #e1e9e3;
+      border-radius: 6px;
+      height: 8px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .barra div {
+      background-color: #ffc107;
+      height: 100%;
+      width: 0;
+      transition: width 1.4s ease-out;
+    }
+
+    /* ===== Loading ===== */
+    .carregando {
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 4px solid #e1e9e3;
+      border-top-color: #26764e;
+      border-radius: 50%;
+      animation: girar 0.8s linear infinite;
+    }
+
+    @keyframes girar {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ===== Pódio ===== */
+    .podio {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 8px;
+      /* Reserva o espaço do pódio já pronto (degrau de 110px + nome + nota),
+         assim os degraus crescem para cima sem empurrar o resto da página. */
+      min-height: 200px;
+      margin-bottom: 20px;
+    }
+
+    .lugar {
+      flex: 1;
+      text-align: center;
+      min-width: 0;
+    }
+
+    .lugar-nome {
+      font-size: 13px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 4px;
+      word-wrap: break-word;
+    }
+
+    .lugar-media {
+      font-size: 15px;
+      font-weight: bold;
+      color: #26764e;
+      margin-bottom: 6px;
+    }
+
+    .degrau {
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 8px;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      transition: height 1.4s ease-out;
+    }
+
+    .ouro .degrau {
+      background-color: #f4b400;
+    }
+
+    .prata .degrau {
+      background-color: #78909c;
+    }
+
+    .bronze .degrau {
+      background-color: #c25e1e;
+    }
+
+    .ouro .degrau.subir {
+      height: 110px;
+    }
+
+    .prata .degrau.subir {
+      height: 80px;
+    }
+
+    .bronze .degrau.subir {
+      height: 60px;
+    }
+
+    /* Cards coloridos dos 3 primeiros */
+    .apresentacao.ouro,
+    .apresentacao.prata,
+    .apresentacao.bronze {
+      border-width: 2px;
+    }
+
+    .apresentacao.ouro {
+      background-color: #fff3c4;
+      border-color: #f4b400;
+    }
+
+    .apresentacao.prata {
+      background-color: #e1ecf4;
+      border-color: #78909c;
+    }
+
+    .apresentacao.bronze {
+      background-color: #fbdcc4;
+      border-color: #c25e1e;
+    }
+
+    body,
+    #tela-resultados {
+      overflow-anchor: none;
+    }
+
+    .resultado-media,
+    .lugar-media,
+    .nota {
+      font-variant-numeric: tabular-nums;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="container">
+  <div class="container">
 
-        <header>
-            <h1>⭐ Avalie Aqui</h1>
-            <p>Avalie as apresentações do 2º DS</p>
-        </header>
+    <header>
+      <h1>⭐ Avalie Aqui</h1>
+      <p>Avalie as apresentações do 2º DS</p>
+    </header>
 
-        <div class="apresentacao">
-            <h2>Simulação do DED</h2>
+    <button class="botao botao-secundario" id="alternar" onclick="alternarTela()">
+      Ver resultados
+    </button>
 
-            <div class="estrelas" data-nome="Simulação do DED"></div>
+    <div id="tela-avaliar">
 
-            <p class="nota">Selecione de 1 a 5 estrelas</p>
-        </div>
+      <div class="apresentacao">
+        <h2>Simulação do DED</h2>
 
-        <div class="apresentacao">
-            <h2>Urna</h2>
+        <div class="estrelas" data-nome="Simulação do DED"></div>
 
-            <div class="estrelas" data-nome="Urna"></div>
+        <p class="nota">Selecione de 1 a 5 estrelas</p>
+      </div>
 
-            <p class="nota">Selecione de 1 a 5 estrelas</p>
-        </div>
+      <div class="apresentacao">
+        <h2>Urna</h2>
 
-        <div class="apresentacao">
-            <h2>Quiz</h2>
+        <div class="estrelas" data-nome="Urna"></div>
 
-            <div class="estrelas" data-nome="Quiz"></div>
+        <p class="nota">Selecione de 1 a 5 estrelas</p>
+      </div>
 
-            <p class="nota">Selecione de 1 a 5 estrelas</p>
-        </div>
+      <div class="apresentacao">
+        <h2>Quiz</h2>
 
-        <div class="apresentacao">
-            <h2>Avalia Aqui</h2>
+        <div class="estrelas" data-nome="Quiz"></div>
 
-            <div class="estrelas" data-nome="Avalia Aqui"></div>
+        <p class="nota">Selecione de 1 a 5 estrelas</p>
+      </div>
 
-            <p class="nota">Selecione de 1 a 5 estrelas</p>
-        </div>
+      <div class="apresentacao">
+        <h2>Avalia Aqui</h2>
 
-        <button class="botao" onclick="enviar()">
-            Enviar avaliação
-        </button>
+        <div class="estrelas" data-nome="Avalia Aqui"></div>
 
-        <p id="mensagem"></p>
+        <p class="nota">Selecione de 1 a 5 estrelas</p>
+      </div>
 
-        <footer>
-            Projeto desenvolvido pelo 2º DS
-        </footer>
+      <button class="botao" onclick="enviar()">
+        Enviar avaliação
+      </button>
+
+      <p id="mensagem"></p>
 
     </div>
 
-    <script>
-        const grupos = document.querySelectorAll(".estrelas");
+    <div id="tela-resultados" hidden>
+      <div id="carregando" class="carregando">
+        <div class="spinner"></div>
+        <p class="nota">Carregando resultados...</p>
+      </div>
 
-        grupos.forEach(function (grupo) {
+      <div id="conteudo-resultados" hidden>
+        <div id="podio" class="podio"></div>
+        <div id="lista-resultados"></div>
+      </div>
 
-            for (let i = 1; i <= 5; i++) {
+      <p id="mensagem-resultados" class="nota"></p>
+    </div>
 
-                const estrela = document.createElement("button");
+    <footer>
+      Projeto desenvolvido pelo 2º DS
+    </footer>
 
-                estrela.innerHTML = "★";
-                estrela.classList.add("estrela");
-                estrela.type = "button";
-                estrela.setAttribute("aria-label", i + " estrelas");
+  </div>
 
-                estrela.onclick = function () {
+  <script>
+    const grupos = document.querySelectorAll(".estrelas");
 
-                    const estrelas = grupo.querySelectorAll(".estrela");
+    grupos.forEach(function (grupo) {
 
-                    estrelas.forEach(function (item, indice) {
+      for (let i = 1; i <= 5; i++) {
 
-                        if (indice < i) {
-                            item.classList.add("ativa");
-                        } else {
-                            item.classList.remove("ativa");
-                        }
+        const estrela = document.createElement("button");
 
-                    });
+        estrela.innerHTML = "★";
+        estrela.classList.add("estrela");
+        estrela.type = "button";
+        estrela.setAttribute("aria-label", i + " estrelas");
 
-                    grupo.dataset.nota = i;
-                };
+        estrela.onclick = function () {
 
-                grupo.appendChild(estrela);
+          const estrelas = grupo.querySelectorAll(".estrela");
+
+          estrelas.forEach(function (item, indice) {
+
+            if (indice < i) {
+              item.classList.add("ativa");
+            } else {
+              item.classList.remove("ativa");
             }
 
-        });
+          });
 
-        function enviar() {
+          grupo.dataset.nota = i;
+        };
 
-            let completo = true;
+        grupo.appendChild(estrela);
+      }
 
-            grupos.forEach(function (grupo) {
+    });
 
-                if (!grupo.dataset.nota) {
-                    completo = false;
-                }
+    // ====== CONFIGURAÇÃO DO SUPABASE ======
+    // SUPABASE_URL: endereço do projeto, no formato https://xxxxxxxx.supabase.co
+    //   (Project Settings > Data API > Project URL).
+    // SUPABASE_KEY: use a "Publishable key" (NUNCA a Secret key).
+    const SUPABASE_URL = "COLE_A_API_URL_AQUI";
+    const SUPABASE_KEY = "COLE_A_CHAVE_PUBLICA_AQUI";
 
-            });
+    // ====== RESULTADOS ======
+    function alternarTela() {
+      const telaAvaliar = document.getElementById("tela-avaliar");
+      const telaResultados = document.getElementById("tela-resultados");
+      const botao = document.getElementById("alternar");
+      const mostrarResultados = telaResultados.hidden;
 
-            const mensagem = document.getElementById("mensagem");
+      telaAvaliar.hidden = mostrarResultados;
+      telaResultados.hidden = !mostrarResultados;
+      botao.textContent = mostrarResultados ? "Voltar para avaliação" : "Ver resultados";
 
-            if (!completo) {
-                mensagem.style.color = "red";
-                mensagem.innerHTML =
-                    "Avalie todas as apresentações antes de enviar!";
-                return;
-            }
+      if (mostrarResultados) {
+        carregarResultados();
+      }
+    }
 
-            mensagem.style.color = "#26764e";
-            mensagem.innerHTML =
-                "Avaliação enviada com sucesso! Obrigado! 💚";
+    let execucaoResultados = 0;
 
-            // Limpa as estrelas para a próxima pessoa.
-            grupos.forEach(function (grupo) {
+    const MEDALHAS = ["🥇", "🥈", "🥉"];
+    const CLASSES_LUGAR = ["ouro", "prata", "bronze"];
 
-                delete grupo.dataset.nota;
+    // Faz o numero subir de 0 ate o valor final.
+    function animarContador(elemento, ate, formatar, duracao) {
+      const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-                grupo.querySelectorAll(".estrela").forEach(
-                    function (estrela) {
-                        estrela.classList.remove("ativa");
-                    }
-                );
+      if (reduzir || ate === 0) {
+        elemento.textContent = formatar(ate);
+        return;
+      }
 
-            });
+      const inicio = performance.now();
+      elemento.textContent = formatar(0);
 
+      function passo(agora) {
+        const progresso = Math.min((agora - inicio) / duracao, 1);
+        const suave = 1 - Math.pow(1 - progresso, 3);
+        elemento.textContent = formatar(ate * suave);
+
+        if (progresso < 1) {
+          requestAnimationFrame(passo);
         }
-    </script>
+      }
+
+      requestAnimationFrame(passo);
+    }
+
+    function formatarMedia(valor) {
+      return "★ " + valor.toFixed(1);
+    }
+
+    function formatarTotal(valor) {
+      const n = Math.round(valor);
+      return n + (n === 1 ? " avaliação" : " avaliações");
+    }
+
+    function esperar(ms) {
+      return new Promise(function (resolver) { setTimeout(resolver, ms); });
+    }
+
+    async function buscarAvaliacoes() {
+      const resposta = await fetch(
+        SUPABASE_URL + "/rest/v1/avaliacoes?select=apresentacao,nota",
+        {
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": "Bearer " + SUPABASE_KEY
+          }
+        }
+      );
+
+      if (!resposta.ok) {
+        throw new Error("Erro " + resposta.status);
+      }
+
+      return resposta.json();
+    }
+
+    function montarPodio(ranking) {
+      const podio = document.getElementById("podio");
+      podio.innerHTML = "";
+
+      // Ordem visual do podio: 2º, 1º, 3º.
+      [1, 0, 2].forEach(function (posicao) {
+        const item = ranking[posicao];
+
+        if (!item) {
+          return;
+        }
+
+        const lugar = document.createElement("div");
+        lugar.className = "lugar " + CLASSES_LUGAR[posicao];
+
+        const nome = document.createElement("p");
+        nome.className = "lugar-nome";
+        nome.textContent = MEDALHAS[posicao] + " " + item.nome;
+
+        const media = document.createElement("p");
+        media.className = "lugar-media";
+
+        const degrau = document.createElement("div");
+        degrau.className = "degrau";
+        degrau.textContent = (posicao + 1) + "º";
+
+        lugar.appendChild(nome);
+        lugar.appendChild(media);
+        lugar.appendChild(degrau);
+        podio.appendChild(lugar);
+
+        animarContador(media, item.media, formatarMedia, 1400);
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            degrau.classList.add("subir");
+          });
+        });
+      });
+    }
+
+    function montarCards(ranking) {
+      const lista = document.getElementById("lista-resultados");
+      lista.innerHTML = "";
+
+      ranking.forEach(function (item, posicao) {
+        const card = document.createElement("div");
+        card.className = "apresentacao";
+
+        if (item.total > 0 && posicao < 3) {
+          card.classList.add(CLASSES_LUGAR[posicao]);
+        }
+
+        const topo = document.createElement("div");
+        topo.className = "resultado-topo";
+
+        const titulo = document.createElement("h2");
+        titulo.textContent =
+          (item.total > 0 && posicao < 3 ? MEDALHAS[posicao] + " " : "") + item.nome;
+
+        const valor = document.createElement("span");
+        valor.className = "resultado-media";
+
+        topo.appendChild(titulo);
+        topo.appendChild(valor);
+
+        const barra = document.createElement("div");
+        barra.className = "barra";
+        const preenchimento = document.createElement("div");
+        barra.appendChild(preenchimento);
+
+        const total = document.createElement("p");
+        total.className = "nota";
+
+        card.appendChild(topo);
+        card.appendChild(barra);
+        card.appendChild(total);
+        lista.appendChild(card);
+
+        if (item.total > 0) {
+          animarContador(valor, item.media, formatarMedia, 1400);
+        } else {
+          valor.textContent = "—";
+        }
+
+        animarContador(total, item.total, formatarTotal, 1400);
+
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            preenchimento.style.width = (item.media / 5 * 100) + "%";
+          });
+        });
+      });
+    }
+
+    async function carregarResultados() {
+      const minhaExecucao = ++execucaoResultados;
+
+      const carregando = document.getElementById("carregando");
+      const conteudo = document.getElementById("conteudo-resultados");
+      const aviso = document.getElementById("mensagem-resultados");
+
+      carregando.hidden = false;
+      conteudo.hidden = true;
+      aviso.textContent = "";
+
+      let dados;
+
+      try {
+        // Espera pelo menos 600ms para o loading não piscar.
+        const resultado = await Promise.all([buscarAvaliacoes(), esperar(600)]);
+        dados = resultado[0];
+      } catch (erro) {
+        console.error(erro);
+
+        if (minhaExecucao === execucaoResultados) {
+          carregando.hidden = true;
+          aviso.textContent = "Não foi possível carregar os resultados.";
+        }
+        return;
+      }
+
+      // O usuario saiu da tela ou clicou de novo enquanto carregava.
+      if (minhaExecucao !== execucaoResultados) {
+        return;
+      }
+
+      const ranking = Array.from(grupos).map(function (grupo) {
+        const nome = grupo.dataset.nome;
+        const notas = dados
+          .filter(function (linha) { return linha.apresentacao === nome; })
+          .map(function (linha) { return linha.nota; });
+
+        const soma = notas.reduce(function (a, b) { return a + b; }, 0);
+
+        return {
+          nome: nome,
+          total: notas.length,
+          media: notas.length ? soma / notas.length : 0
+        };
+      }).sort(function (a, b) {
+        return b.media - a.media || b.total - a.total;
+      });
+
+      const comVotos = ranking.filter(function (item) { return item.total > 0; });
+
+      carregando.hidden = true;
+      conteudo.hidden = false;
+      aviso.textContent = dados.length === 0 ? "Ainda não há avaliações." : "";
+
+      montarPodio(comVotos);
+      montarCards(ranking);
+    }
+
+    async function enviar() {
+
+      let completo = true;
+
+      grupos.forEach(function (grupo) {
+
+        if (!grupo.dataset.nota) {
+          completo = false;
+        }
+
+      });
+
+      const mensagem = document.getElementById("mensagem");
+
+      if (!completo) {
+        mensagem.style.color = "red";
+        mensagem.innerHTML =
+          "Avalie todas as apresentações antes de enviar!";
+        return;
+      }
+
+      // Uma linha por apresentação avaliada.
+      const linhas = Array.from(grupos).map(function (grupo) {
+        return {
+          apresentacao: grupo.dataset.nome,
+          nota: Number(grupo.dataset.nota)
+        };
+      });
+
+      try {
+        const resposta = await fetch(
+          SUPABASE_URL + "/rest/v1/avaliacoes",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "apikey": SUPABASE_KEY,
+              "Authorization": "Bearer " + SUPABASE_KEY
+            },
+            body: JSON.stringify(linhas)
+          }
+        );
+
+        if (!resposta.ok) {
+          throw new Error("Erro " + resposta.status);
+        }
+      } catch (erro) {
+        console.error(erro);
+        mensagem.style.color = "red";
+        mensagem.innerHTML =
+          "Não foi possível enviar. Tente novamente.";
+        return;
+      }
+
+      mensagem.style.color = "#26764e";
+      mensagem.innerHTML =
+        "Avaliação enviada com sucesso! Obrigado! 💚";
+
+      // Limpa as estrelas para a próxima pessoa.
+      grupos.forEach(function (grupo) {
+
+        delete grupo.dataset.nota;
+
+        grupo.querySelectorAll(".estrela").forEach(
+          function (estrela) {
+            estrela.classList.remove("ativa");
+          }
+        );
+
+      });
+
+    }
+  </script>
 
 </body>
 
